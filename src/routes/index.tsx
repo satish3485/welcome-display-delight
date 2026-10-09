@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-import { ArrowRight, Play, Monitor, Upload, Wifi, Check, Zap, Globe, Layers, ArrowUpRight, Sparkles, Sun, CircleCheck, Image, LayoutTemplate } from 'lucide-react';
+import { ArrowRight, Play, Monitor, Upload, Check, Zap, Globe, Layers, ArrowUpRight, Sparkles, Sun, Image, LayoutTemplate } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import coast from '@/assets/signage-coast.jpg';
