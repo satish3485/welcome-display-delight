@@ -23,7 +23,7 @@ const samples = [
   { category: 'Event', image: event, title: 'Feel the music.\nLive the moment.', label: 'LIVE SESSIONS', line: 'A night worth remembering.' },
   { category: 'Promotion', image: promotion, title: 'Fresh kicks.\nBig energy.', label: 'IN THE SPOTLIGHT', line: 'Find your next favorite.' },
   { category: 'Seasonal', image: seasonal, title: 'A little magic.\nA lot of joy.', label: 'THE FESTIVE EDIT', line: 'Make the season feel special.' },
-];
+] as const;
 
 export function SignageArtwork({ index }: { index: number }) {
   const sample = samples[index] ?? samples[0];
@@ -39,6 +39,8 @@ export function SignageShowcase() {
   const [playing, setPlaying] = useState(true);
   const [reduced, setReduced] = useState(false);
   const transferring = selected !== displayed;
+  const selectedSample = samples[selected] ?? samples[0];
+  const displayedSample = samples[displayed] ?? samples[0];
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
     const update = () => setReduced(query.matches);
@@ -60,8 +62,8 @@ export function SignageShowcase() {
       <div className="showcase-tv"><div className="television"><div className="tv-screen"><SignageArtwork index={displayed} /></div></div><div className="tv-neck" /><div className="tv-base" /></div>
       <div className="laptop"><div className="laptop-lid"><div className="laptop-app"><div className="laptop-toolbar"><span><Layers size={11} /> leitbuilt.</span><span className="laptop-status"><span className="live-dot" /> My content</span></div><div className="laptop-workspace"><aside><Layers size={13} /><Monitor size={13} /><Upload size={13} /></aside><div className="laptop-editor"><div className="laptop-editor-title"><span>{samples[selected].category}</span><span>{selected + 1} / 10</span></div><div className="laptop-canvas"><SignageArtwork index={selected} /></div><div className="laptop-thumbnails">{samples.slice(0,4).map((sample,index) => <Button key={sample.category} variant="ghost" className={`sample-thumb ${selected === index ? 'is-active' : ''}`} aria-label={`Show ${sample.category} sample`} onClick={() => choose(index)}><img src={sample.image} alt="" width={90} height={60} loading="lazy" /></Button>)}</div><div className="laptop-publish"><span>{transferring ? 'Sending to screen…' : 'Ready on screen'}</span>{transferring ? <Upload size={11} /> : <Check size={11} />}</div></div></div></div></div><div className="laptop-base" /></div>
       <div className="transfer-track" aria-hidden="true"><span /><span /><span /><ArrowRight size={16} /></div>
-      {transferring && <div key={selected} className="flying-image" aria-hidden="true"><img src={samples[selected].image} alt="" width={180} height={120} /></div>}
-      <div className="screen-badge"><Wifi size={13} /><span>{transferring ? 'Updating preview…' : `${samples[displayed].category} display`}</span><span className="live-dot" /></div>
+      {transferring && <div key={selected} className="flying-image" aria-hidden="true"><img src={selectedSample.image} alt="" width={180} height={120} /></div>}
+      <div className="screen-badge"><Wifi size={13} /><span>{transferring ? 'Updating preview…' : `${displayedSample.category} display`}</span><span className="live-dot" /></div>
     </div>
     <div className="showcase-controls"><div className="category-selector" aria-label="Signage categories">{samples.map((sample,index) => <Button key={sample.category} variant="ghost" className={`category-option ${selected === index ? 'is-selected' : ''}`} aria-pressed={selected === index} onClick={() => choose(index)}>{sample.category}</Button>)}</div><Button variant="outline" size="icon" className="playback-button" title={playing && !reduced ? 'Pause slideshow' : 'Play slideshow'} aria-label={playing && !reduced ? 'Pause slideshow' : 'Play slideshow'} onClick={() => { if (reduced) setSelected(value => (value + 1) % samples.length); else setPlaying(value => !value); }}>{playing && !reduced ? <Pause /> : <Play />}</Button></div>
     <div className="preview-meta"><span className="live-dot" /> Your laptop. Your content. Your big screen.</div>
