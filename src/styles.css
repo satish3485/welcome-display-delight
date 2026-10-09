@@ -121,4 +121,66 @@
  .benefit-strip { gap: 19px; flex-wrap: wrap; padding: 18px 16px; margin-top: 8px; } .benefit-strip span { font-size: 10px; gap: 6px; } .benefit-strip span:last-child { display: none; }
  .setup-section { padding: 37px 24px; } .section-heading { display: block; } .section-heading h2 { font-size: 27px; } .section-heading p { margin-top: 12px; } .steps-grid { grid-template-columns: 1fr; gap: 25px; } .step { padding-top: 18px; } .step h3 { margin-top: 12px; } .site-footer { padding: 20px 24px; gap: 20px; }
 }
-@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+.showcase { max-width: 960px; margin: 35px auto 0; padding-bottom: 24px; animation: reveal 1s .2s both; }
+.device-scene { position: relative; aspect-ratio: 2.3; margin: 0 20px; }
+.showcase-tv { position: absolute; width: 72%; top: 0; right: 0; }
+.showcase-tv .tv-screen::after { display: none; }
+.showcase-tv .signage-copy { padding-left: 30%; }
+.showcase-tv .signage-copy h2 { font-size: 30px; }
+.signage-artwork { position: absolute; inset: 0; overflow: hidden; animation: signage-arrive .65s ease both; }
+.signage-artwork::after { content: ''; position: absolute; inset: 0; background: var(--screen-shade); }
+.signage-artwork img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; animation: coast-drift 12s ease infinite alternate; }
+.signage-copy { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 25px 30px; color: var(--primary-foreground); text-align: left; }
+.signage-brand { font-size: 11px; font-weight: 600; }
+.signage-copy small { font-size: 8px; }
+.signage-copy h2 { font-size: 34px; white-space: pre-line; line-height: 1.1; margin: 8px 0; font-weight: 500; }
+.signage-copy p { font-size: 10px; margin: 0; }
+.signage-bottom { font-size: 7px; }
+.laptop { position: absolute; width: 37%; left: 0; bottom: 0; z-index: 4; filter: drop-shadow(var(--shadow-float)); }
+.laptop-lid { background: var(--screen); padding: 7px; border-radius: 10px 10px 0 0; }
+.laptop-app { background: var(--card); aspect-ratio: 1.55; border-radius: 4px; overflow: hidden; text-align: left; }
+.laptop-toolbar { display: flex; align-items: center; justify-content: space-between; padding: 7px 9px; border-bottom: 1px solid var(--border); }
+.laptop-toolbar > span { display: flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 600; }
+.laptop-toolbar svg { color: var(--primary); }
+.laptop-toolbar .laptop-status { font-size: 7px; color: var(--muted-foreground); font-weight: 400; }
+.laptop-workspace { display: flex; height: calc(100% - 27px); }
+.laptop-workspace aside { width: 30px; border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; padding-top: 11px; gap: 15px; color: var(--muted-foreground); }
+.laptop-workspace aside svg:first-child { color: var(--primary); }
+.laptop-editor { flex: 1; min-width: 0; padding: 8px 10px; }
+.laptop-editor-title { display: flex; justify-content: space-between; font-size: 7px; margin-bottom: 6px; color: var(--muted-foreground); }
+.laptop-canvas { position: relative; aspect-ratio: 2; overflow: hidden; border-radius: 3px; }
+.laptop-canvas .signage-copy { padding: 9px 12px; }
+.laptop-canvas .signage-brand { font-size: 4px; }
+.laptop-canvas .signage-copy h2 { font-size: 13px; margin: 4px 0; }
+.laptop-canvas .signage-copy small,.laptop-canvas .signage-copy p { font-size: 4px; }
+.laptop-canvas .signage-bottom { display: none; }
+.laptop-thumbnails { display: flex; gap: 5px; margin-top: 7px; }
+.laptop-thumbnails .sample-thumb { height: 27px; flex: 1; min-width: 0; padding: 0; border: 2px solid transparent; border-radius: 3px; overflow: hidden; }
+.sample-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.laptop-thumbnails .sample-thumb.is-active { border-color: var(--primary); }
+.laptop-publish { display: flex; align-items: center; justify-content: space-between; color: var(--primary); font-size: 7px; margin-top: 8px; }
+.laptop-base { height: 8px; margin: 0 -12px; border-radius: 0 0 50% 50%; background: var(--border); border-top: 2px solid var(--muted-foreground); }
+.transfer-track { position: absolute; left: 39%; bottom: 12%; width: 17%; display: flex; align-items: center; justify-content: space-around; color: var(--primary); opacity: .4; }
+.transfer-track span { height: 4px; width: 4px; background: var(--primary); border-radius: 50%; }
+.is-transferring .transfer-track { opacity: 1; }
+.is-transferring .transfer-track span { animation: transfer-pulse .6s infinite alternate; }
+.is-transferring .transfer-track span:nth-child(2) { animation-delay: .2s; }
+.is-transferring .transfer-track span:nth-child(3) { animation-delay: .4s; }
+.flying-image { position: absolute; width: 16%; aspect-ratio: 1.5; left: 19%; top: 62%; z-index: 6; border: 3px solid var(--card); border-radius: 5px; box-shadow: var(--shadow-float); animation: content-flight 1.5s cubic-bezier(.3,.1,.2,1) both; }
+.flying-image img { width: 100%; height: 100%; object-fit: cover; }
+.screen-badge { position: absolute; right: 3%; bottom: 2%; display: flex; align-items: center; gap: 8px; font-size: 10px; color: var(--muted-foreground); }
+.screen-badge > svg { color: var(--primary); }
+.showcase-controls { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 24px; }
+.category-selector { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
+.category-selector .category-option { font-size: 11px; padding: 0 10px; height: 30px; border-radius: 5px; color: var(--muted-foreground); }
+.category-selector .category-option.is-selected { background: var(--secondary); color: var(--primary); }
+.playback-button { flex-shrink: 0; height: 30px; width: 30px; }
+@keyframes signage-arrive { from { opacity: 0; transform: scale(1.035); } to { opacity: 1; transform: scale(1); } }
+@keyframes transfer-pulse { to { opacity: .2; transform: scale(1.6); } }
+@keyframes content-flight { 0% { opacity: 0; transform: scale(.6) rotate(-8deg); } 15% { opacity: 1; } 75% { opacity: 1; } 100% { left: 65%; top: 28%; transform: scale(.4) rotate(0); opacity: 0; } }
+@media(max-width:700px) {
+ .showcase { margin-top: 32px; } .device-scene { aspect-ratio: 1.6; margin: 0; } .showcase-tv { width: 92%; } .laptop { width: 55%; } .showcase-tv .signage-copy { padding: 16px; } .showcase-tv .signage-copy h2 { font-size: 24px; } .showcase-tv .signage-copy p { font-size: 8px; } .signage-brand { font-size: 8px; } .signage-bottom { font-size: 5px; }
+ .showcase-tv .signage-copy { padding-left: 50%; padding-right: 10px; } .showcase-tv .signage-copy h2 { font-size: 17px; } .showcase-tv .signage-bottom { display: none; }
+ .laptop-toolbar { padding: 5px; } .laptop-toolbar > span { font-size: 6px; } .laptop-toolbar .laptop-status { font-size: 5px; } .laptop-workspace { height: calc(100% - 23px); } .laptop-workspace aside { width: 20px; gap: 8px; padding-top: 7px; } .laptop-editor { padding: 5px; } .laptop-editor-title { font-size: 5px; margin-bottom: 3px; } .laptop-canvas .signage-copy { padding: 6px; } .laptop-canvas .signage-copy h2 { font-size: 9px; margin: 2px 0; } .laptop-canvas .signage-copy p { display: none; } .laptop-thumbnails { margin-top: 4px; gap: 3px; } .laptop-thumbnails .sample-thumb { height: 17px; } .laptop-publish { font-size: 5px; margin-top: 3px; } .transfer-track { left: 58%; bottom: 18%; width: 14%; } .screen-badge { font-size: 8px; right: 0; bottom: 2%; gap: 5px; } .showcase-controls { gap: 6px; margin-top: 16px; } .category-selector .category-option { font-size: 10px; padding-inline: 7px; height: 28px; }
+}
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .flying-image { display: none; } }

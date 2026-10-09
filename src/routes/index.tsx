@@ -1,9 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-import { ArrowRight, Play, Monitor, Upload, Wifi, Check, Zap, Globe, Layers, ArrowUpRight, Sparkles, Sun, CircleCheck, Image, LayoutTemplate } from 'lucide-react';
+import { ArrowRight, Play, Monitor, Upload, Check, Zap, Globe, Layers, ArrowUpRight, Sparkles, Sun, Image, LayoutTemplate } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import coast from '@/assets/signage-coast.jpg';
+import { SignageShowcase } from '@/components/signage-showcase';
 
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [
@@ -46,12 +47,7 @@ function Welcome() {
         <p className="hero-copy reveal">Turn your TV into something extraordinary.<br />Beautiful digital signage. Simple to set up. Yours to control.</p>
         <div className="hero-actions reveal"><Button size="lg" onClick={start}>Set up your screen <ArrowRight /></Button><Button variant="outline" size="lg" onClick={() => setDialog('demo')}><Play size={14} /> See it in action</Button></div>
         <div className="fine-print reveal"><Check size={12} /> Your TV. Your content. A whole new possibility.</div>
-        <div className="preview-stage">
-          <div className="float-label float-left"><span className="float-icon"><Upload size={17} /></span><div><strong>Your content, ready to go</strong><small>Images, videos & more</small></div><CircleCheck size={14} className="text-success" /></div>
-          <div className="television"><Screen /></div><div className="tv-neck" /><div className="tv-base" />
-          <div className="float-label float-right"><span className="float-icon"><Monitor size={17} /></span><div><strong>Lobby display</strong><small><span className="live-dot" /> &nbsp; Preview playing</small></div><Wifi size={15} className="text-success" /></div>
-          <div className="preview-meta"><span className="live-dot" /> A little preview of what’s possible</div>
-        </div>
+        <SignageShowcase />
       </section>
       <div className="benefit-strip"><span><Monitor /> Made for your TV</span><span><Zap /> Easy from the start</span><span><Globe /> Manage from anywhere</span><span><Layers /> Content that stands out</span></div>
       <section className="setup-section" id="how-it-works">
