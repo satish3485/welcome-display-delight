@@ -115,7 +115,7 @@
 @media(min-width:1600px) { .hero { padding-top: 58px; } .preview-stage { max-width: 1050px; } }
 @media(max-width:700px) {
  .site-header { height: 73px; padding: 0 22px; } .wordmark { font-size: 23px; } .nav-items { gap: 12px; } .nav-link { display: none; }
- .hero { padding: 37px 20px 0; } .hero h1 { font-size: 43px; } .hero-copy { font-size: 14px; max-width: 330px; }
+ .hero { padding: 37px 20px 0; } .hero h1 { font-size: 43px; } .hero-copy { font-size: 14px; max-width: 330px; } .hero-actions { flex-wrap: wrap; } .hero-actions > button { padding-inline: 18px; font-size: 12px; }
  .preview-stage { padding: 0 0 23px; margin-top: 37px; } .float-label { padding: 8px 10px; gap: 7px; } .float-label .float-icon { padding: 5px; } .float-left { left: -6px; top: -16px; } .float-right { right: -6px; bottom: 54px; } .float-label strong { font-size: 9px; } .float-label small { font-size: 8px; }
  .screen-content { padding: 17px 19px; } .screen-message h2 { font-size: 24px; margin: 7px 0; } .screen-message small { font-size: 7px; } .screen-message p { font-size: 8px; } .screen-brand { font-size: 9px; } .screen-footer { font-size: 7px; }
  .benefit-strip { gap: 19px; flex-wrap: wrap; padding: 18px 16px; margin-top: 8px; } .benefit-strip span { font-size: 10px; gap: 6px; } .benefit-strip span:last-child { display: none; }
