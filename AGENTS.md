@@ -12,3 +12,4 @@
 ## Application rules
 - Keep the welcome experience at the index route and its interactive screen previews client-side; no live TV pairing is implied by a local preview.
 - Define visual styling and motion in the global semantic design system so the welcome and display previews remain consistent.
+- Keep the animated laptop and TV in a focused showcase component with shared sample artwork so the selected content matches the receiving display.
