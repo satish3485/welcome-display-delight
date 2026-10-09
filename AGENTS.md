@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Application rules
+- Keep the welcome experience at the index route and its interactive screen previews client-side; no live TV pairing is implied by a local preview.
+- Define visual styling and motion in the global semantic design system so the welcome and display previews remain consistent.
