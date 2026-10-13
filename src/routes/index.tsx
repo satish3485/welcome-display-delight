@@ -42,11 +42,11 @@ function Welcome() {
     </header>
     <main>
       <section className="hero">
-        <div className="eyebrow reveal"><Sparkles size={13} /> Small setup. Big presence.</div>
-        <h1 className="reveal">Leitbuilt<span className="brand-period">.</span><span className="hero-tagline">Made for the big screen.</span></h1>
-        <p className="hero-copy reveal">Your ideas deserve more than a small screen.<br />Create something beautiful. Put it on your TV.</p>
+        <div className="eyebrow reveal"><Sparkles size={13} /> Welcome to Leitbuilt</div>
+        <h1 className="reveal">Your content.<br /><span>On the big screen.</span></h1>
+        <p className="hero-copy reveal">Turn your TV into something extraordinary.<br />Beautiful digital signage. Simple to set up. Yours to control.</p>
         <div className="hero-actions reveal"><Button size="lg" onClick={start}>Set up your screen <ArrowRight /></Button><Button variant="outline" size="lg" onClick={() => setDialog('demo')}><Play size={14} /> See it in action</Button></div>
-        <div className="fine-print reveal"><Check size={12} /> Your content. Front and center.</div>
+        <div className="fine-print reveal"><Check size={12} /> Your TV. Your content. A whole new possibility.</div>
         <SignageShowcase />
       </section>
       <div className="benefit-strip"><span><Monitor /> Made for your TV</span><span><Zap /> Easy from the start</span><span><Globe /> Manage from anywhere</span><span><Layers /> Content that stands out</span></div>
