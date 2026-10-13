@@ -281,8 +281,8 @@ body { background: var(--background); }
  .showcase { margin-top: 35px; }
  .device-scene { aspect-ratio: 1.65; margin: 0; }
  .showcase-tv { width: 94%; transform: none; }
- .showcase-tv .signage-copy { padding-left: 36%; padding-right: 10px; }
- .showcase-tv .signage-copy h2 { font-size: 19px; }
+ .showcase-tv .signage-copy { padding-left: 51%; padding-right: 10px; }
+ .showcase-tv .signage-copy h2 { font-size: 16px; }
  .showcase-tv .signage-brand { font-size: 7px; }
  .showcase-tv .signage-copy p { font-size: 7px; }
  .laptop { width: 51%; transform: none; }
