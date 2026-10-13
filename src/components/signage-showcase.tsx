@@ -57,9 +57,9 @@ export function SignageShowcase() {
     return () => window.clearTimeout(timer);
   }, [selected, reduced]);
   const choose = (index: number) => { setPlaying(false); setSelected(index); };
-  return <div className="showcase">
+  return <div className="showcase" data-playing={playing && !reduced}>
     <div className={`device-scene ${transferring ? 'is-transferring' : ''}`}>
-      <div className="showcase-tv"><div className="television"><div className="tv-screen"><SignageArtwork index={displayed} /></div></div><div className="tv-neck" /><div className="tv-base" /></div>
+      <div className="showcase-tv"><div className="television"><div className="tv-screen"><SignageArtwork index={displayed} /><div key={selected} className="slideshow-progress" aria-hidden="true"><span /></div></div></div><div className="tv-neck" /><div className="tv-base" /></div>
       <div className="laptop"><div className="laptop-lid"><div className="laptop-app"><div className="laptop-toolbar"><span><Layers size={11} /> leitbuilt.</span><span className="laptop-status"><span className="live-dot" /> My content</span></div><div className="laptop-workspace"><aside><Layers size={13} /><Monitor size={13} /><Upload size={13} /></aside><div className="laptop-editor"><div className="laptop-editor-title"><span>{selectedSample.category}</span><span>{selected + 1} / 10</span></div><div className="laptop-canvas"><SignageArtwork index={selected} /></div><div className="laptop-thumbnails">{samples.slice(0,4).map((sample,index) => <Button key={sample.category} variant="ghost" className={`sample-thumb ${selected === index ? 'is-active' : ''}`} aria-label={`Show ${sample.category} sample`} onClick={() => choose(index)}><img src={sample.image} alt="" width={90} height={60} loading="lazy" /></Button>)}</div><div className="laptop-publish"><span>{transferring ? 'Sending to screen…' : 'Ready on screen'}</span>{transferring ? <Upload size={11} /> : <Check size={11} />}</div></div></div></div></div><div className="laptop-base" /></div>
       <div className="transfer-track" aria-hidden="true"><span /><span style={{animationDelay:".33s"}} /><span style={{animationDelay:".66s"}} /><ArrowRight size={16} /></div>
       {transferring && <div key={selected} className="flying-image" aria-hidden="true"><img src={selectedSample.image} alt="" width={180} height={120} /></div>}

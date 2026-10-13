@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Play, Monitor, Upload, Check, Zap, Globe, Layers, ArrowUpRight, Sparkles, Sun, Image, LayoutTemplate } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -30,6 +30,22 @@ function Screen({ name = 'THE COAST', alternate = false }: { name?: string; alte
 }
 
 function Welcome() {
+  const pageRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || !('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    page.classList.add('motion-ready');
+    page.querySelectorAll('.scroll-reveal').forEach(element => observer.observe(element));
+    return () => { observer.disconnect(); page.classList.remove('motion-ready'); };
+  }, []);
   const [dialog, setDialog] = useState<'setup' | 'demo' | null>(null);
   const [step, setStep] = useState(0);
   const [name, setName] = useState('My first screen');
@@ -40,7 +56,7 @@ function Welcome() {
       <a className="wordmark" href="/" aria-label="Leitbuilt home"><span className="brand-symbol"><Layers size={21} strokeWidth={2.2} /></span>leitbuilt<span className="text-primary">.</span></a>
       <nav className="nav-items" aria-label="Main navigation"><a className="nav-link" href="#how-it-works">How it works</a><Button variant="outline" size="sm" onClick={start}>Get started <ArrowUpRight /></Button></nav>
     </header>
-    <main>
+    <main ref={pageRef}>
       <section className="hero">
         <div className="eyebrow reveal"><Sparkles size={13} /> Welcome to Leitbuilt</div>
         <h1 className="reveal">Your content.<br /><span>On the big screen.</span></h1>
@@ -49,10 +65,10 @@ function Welcome() {
         <div className="fine-print reveal"><Check size={12} /> Your TV. Your content. A whole new possibility.</div>
         <SignageShowcase />
       </section>
-      <div className="benefit-strip"><span><Monitor /> Made for your TV</span><span><Zap /> Easy from the start</span><span><Globe /> Manage from anywhere</span><span><Layers /> Content that stands out</span></div>
+      <div className="benefit-strip scroll-reveal"><span><Monitor /> Made for your TV</span><span><Zap /> Easy from the start</span><span><Globe /> Manage from anywhere</span><span><Layers /> Content that stands out</span></div>
       <section className="setup-section" id="how-it-works">
-        <div className="section-heading"><div><div className="eyebrow">Small setup. Big impact.</div><h2>From your idea to your TV.</h2></div><p>Three simple steps. One beautiful screen.</p></div>
-        <div className="steps-grid">
+        <div className="section-heading scroll-reveal"><div><div className="eyebrow">Small setup. Big impact.</div><h2>From your idea to your TV.</h2></div><p>Three simple steps. One beautiful screen.</p></div>
+        <div className="steps-grid scroll-reveal">
           <article className="step"><div className="step-top"><Monitor size={23} /><span className="step-number">01 — CONNECT</span></div><h3>Give your TV a new purpose.</h3><p>Connect your display to Leitbuilt and make it part of your space.</p></article>
           <article className="step"><div className="step-top"><Upload size={23} /><span className="step-number">02 — CREATE</span></div><h3>Make it unmistakably yours.</h3><p>Add your images, videos, and messages. Build a display that tells your story.</p></article>
           <article className="step"><div className="step-top"><Play size={23} /><span className="step-number">03 — SHOW</span></div><h3>Let your screen do the talking.</h3><p>Bring your content to the big screen and keep it fresh, wherever you are.</p></article>

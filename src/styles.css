@@ -238,4 +238,45 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-i
 @keyframes scanline { from { top: -30%; } to { top: 100%; } }
 @keyframes packet { from { left: 0; opacity: 0; } 20% { opacity: 1; } to { left: 100%; opacity: 0; } }
 @media(max-width:700px) { .hero h1 { font-size: 44px; } .showcase-tv, .laptop { transform: none; } .section-heading h2 { font-size: 28px; } .category-selector { border-radius: 16px; } }
-@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .flying-image { display: none; } }
+.hero > .eyebrow { animation-delay: .05s; }
+.hero h1.reveal { animation-delay: .16s; }
+.hero-copy.reveal { animation-delay: .28s; }
+.hero-actions.reveal { animation-delay: .4s; }
+.fine-print.reveal { animation-delay: .5s; }
+.showcase { animation-delay: .6s; }
+.hero-actions > button { position: relative; overflow: hidden; transition: transform .25s, box-shadow .25s; }
+.hero-actions > button:hover { transform: translateY(-3px); }
+.hero-actions > button:first-child::after { content: ''; position: absolute; inset: 0; background: var(--gradient-beam); opacity: .25; transform: translateX(-120%) skewX(-20deg); animation: button-sheen 7s 2s ease-in-out infinite; pointer-events: none; }
+.hero-actions > button svg { transition: translate .25s; }
+.hero-actions > button:hover svg { translate: 3px 0; }
+.brand-symbol svg { transition: rotate .5s; }
+.wordmark:hover .brand-symbol svg { rotate: 180deg; }
+.showcase-tv { animation: device-float 8s ease-in-out infinite; }
+.laptop { animation: device-float 7s -3s ease-in-out infinite reverse; }
+.signage-brand { animation: artwork-copy-in .5s .12s both; }
+.signage-copy > div { animation: artwork-copy-in .65s .22s both; }
+.signage-bottom { animation: artwork-copy-in .5s .35s both; }
+.screen-badge .live-dot { animation: status-breathe 3s ease-in-out infinite; }
+.slideshow-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 5; background: var(--glass); overflow: hidden; }
+.slideshow-progress span { display: block; height: 100%; background: var(--primary-glow); transform-origin: left; animation: slideshow-fill 6.5s linear both; }
+.showcase[data-playing="false"] .slideshow-progress { opacity: 0; }
+.showcase[data-playing="false"] :is(.showcase-tv, .laptop, .signage-artwork img, .screen-badge .live-dot, .television::before) { animation-play-state: paused; }
+.category-selector .category-option { transition: transform .2s, background .25s, color .25s, box-shadow .25s; }
+.category-selector .category-option:hover { transform: translateY(-2px); }
+.category-selector .category-option:active { transform: scale(.96); }
+.motion-ready .scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s, transform .75s; }
+.motion-ready .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+.motion-ready .steps-grid .step { opacity: 0; translate: 0 20px; transition: opacity .65s, translate .65s, transform .35s, border-color .35s, box-shadow .35s; }
+.motion-ready .steps-grid.is-visible .step { opacity: 1; translate: 0 0; }
+.steps-grid .step:nth-child(2) { transition-delay: .12s; }
+.steps-grid .step:nth-child(3) { transition-delay: .24s; }
+.step:hover .step-top > svg { animation: icon-pop .6s ease; }
+@keyframes device-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+@keyframes artwork-copy-in { from { opacity: 0; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
+@keyframes slideshow-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes status-breathe { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+@keyframes button-sheen { 0%,65% { transform: translateX(-120%) skewX(-20deg); } 85%,100% { transform: translateX(120%) skewX(-20deg); } }
+@keyframes icon-pop { 40% { transform: translateY(-4px) rotate(-8deg); } 70% { transform: rotate(5deg); } }
+@media(max-width:700px) { .showcase-tv, .laptop { animation-name: device-float-small; } }
+@keyframes device-float-small { 0%,100% { translate: 0 0; } 50% { translate: 0 -3px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .flying-image, .slideshow-progress { display: none; } .motion-ready .scroll-reveal, .motion-ready .steps-grid .step { opacity: 1; transform: none; translate: none; } }
